@@ -77,12 +77,27 @@
   display: block;
 }
 
+.searchBar {
+  margin: 30px auto;
+  width: 40vw;
+}
+
+.pokemonList {
+  position: relative;
+  text-align: center;
+  margin: 30px auto;
+}
+
 input {
-  background-color: rgba(0, 0, 0, 0.05);
+  margin: 0 auto;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: relative;
   border: none;
-  color: black;
-  border-bottom: 2px solid white;
-  width: 30vw;
+  color: white;
+  border-bottom: 2px solid black;
+  width: 100%;
+  font-size: 2.5em;
+  padding-left: 10px;
 }
 
 .type {

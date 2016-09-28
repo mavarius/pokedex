@@ -3,9 +3,9 @@ import ServerActions from './actions/ServerActions'
 
 const API = {
   fetchPokemon(number) {
-    $.get(`http://pokeapi.co/api/v2/pokemon/${number}`, pokemon => {
+    $.get(`https://pokeapi.co/api/v2/pokemon/${number}`, pokemon => {
       // debugger;
-      $.get(`http://pokeapi.co/api/v2/pokemon-species/${number}`, pokedexEntry => {
+      $.get(`https://pokeapi.co/api/v2/pokemon-species/${number}`, pokedexEntry => {
         // debugger;
         ServerActions.receivePokemon(pokemon, pokedexEntry)
       })
@@ -14,7 +14,7 @@ const API = {
   },
 
   fetchEmAll() {
-    $.get(`http://pokeapi.co/api/v2/pokedex/1/`, allPokemon => {
+    $.get(`https://pokeapi.co/api/v2/pokedex/1/`, allPokemon => {
       // debugger;
       ServerActions.hoardPokemon(allPokemon)
     })
