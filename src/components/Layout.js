@@ -35,8 +35,6 @@ export default class Layout extends Component {
   }
 
   fetchPokemon(number) {
-    // let { pokemonNumber } = this.refs
-    // let number = pokemonNumber.value
     PokedexActions.fetchPokemon(number)
   }
 
@@ -45,12 +43,12 @@ export default class Layout extends Component {
   }
 
   render() {
-    const { allPokemon, pokemon, pokedexEntry } = this.state
+    const { allPokemon, pokemon, pokedexEntry, unfilteredPokemon } = this.state
     return (
       <div className='container'>
         <h1 className='text-center'>Pokédex</h1>
 
-        <SearchBar/>
+        <SearchBar allPokemon={allPokemon} unfilteredPokemon={unfilteredPokemon}/>
 
         <PokedexEntry pokemon={pokemon} dismiss={this.dismiss} pokedexEntry={pokedexEntry}/>
 

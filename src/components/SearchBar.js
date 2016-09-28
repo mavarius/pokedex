@@ -1,8 +1,29 @@
 import React, { Component } from 'react'
+import PokedexActions from '../actions/PokedexActions'
 
 export default class SearchBar extends Component {
   constructor() {
     super()
+    this.liveSearch = this.liveSearch.bind(this)
+  }
+
+  liveSearch() {
+    const { pokeSearch } = this.refs
+    const { allPokemon, unfilteredPokemon } = this.props
+
+    let searchValue = pokeSearch.value
+
+    let searchEntry
+
+    if (searchValue.length > 0) {
+      searchEntry = allPokemon.filter(pokemon => {
+        return pokemon.pokemon_species.name.slice(0, (searchValue.length)) === searchValue
+      })
+    } else {
+      searchEntry = unfilteredPokemon
+    }
+
+    PokedexActions.filterPokemon(searchEntry)
   }
 
   render() {
@@ -10,12 +31,9 @@ export default class SearchBar extends Component {
     return (
       <div className="row">
         <div className="searchBar">
-          <input type="text" ref="pokeSearch" placeholder="Search by Pokemon name or number"/>
+          <input onChange={this.liveSearch} type="text" ref="pokeSearch" placeholder="Search by Pokemon name or number"/>
         </div>
       </div>
     )
   }
 }
-
-// <span className="loadingMessage">Catching your Pokémon...</span>
-// <button onClick={this.fetchPokemon} className="btn btn-default">Catch Pokemon</button>

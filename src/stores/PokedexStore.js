@@ -7,11 +7,15 @@ let _pokedexEntry = null;
 
 let _allPokemon = null;
 
+let _unfilteredPokemon = null;
+
 class PokedexStore extends EventEmitter {
   constructor() {
     super();
 
     AppDispatcher.register(action => {
+      // const { pokemon, pokedexEntry, allPokemon, searchEntry } = action.payload
+
       switch (action.type) {
         case 'RECEIVE_POKEMON':
           _pokemon = action.payload.pokemon
@@ -20,10 +24,15 @@ class PokedexStore extends EventEmitter {
           break;
         case 'FETCH_EM_ALL':
           _allPokemon = action.payload.allPokemon.pokemon_entries
+          _unfilteredPokemon = action.payload.allPokemon.pokemon_entries
           this.emit('CHANGE')
           break;
         case 'CLEAR_SEARCH':
           _pokemon = null;
+          this.emit('CHANGE')
+          break;
+        case 'FILTER_POKEMON':
+          _allPokemon = action.payload.searchEntry
           this.emit('CHANGE')
           break;
       }
@@ -42,7 +51,8 @@ class PokedexStore extends EventEmitter {
     return {
       pokemon: _pokemon,
       allPokemon: _allPokemon,
-      pokedexEntry: _pokedexEntry
+      pokedexEntry: _pokedexEntry,
+      unfilteredPokemon: _unfilteredPokemon
     }
   }
 }
