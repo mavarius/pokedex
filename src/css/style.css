@@ -63,6 +63,10 @@
   image-rendering: pixelated;
 }
 
+.genera {
+  color: gray;
+}
+
 .modalBack {
   position: fixed;
   z-index: 1;

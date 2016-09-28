@@ -9,6 +9,8 @@ let _allPokemon = null;
 
 let _unfilteredPokemon = null;
 
+let _fetching = false;
+
 class PokedexStore extends EventEmitter {
   constructor() {
     super();
@@ -18,6 +20,8 @@ class PokedexStore extends EventEmitter {
 
       switch (action.type) {
         case 'RECEIVE_POKEMON':
+          _fetching = true;
+          this.emit('CHANGE')
           _pokemon = action.payload.pokemon
           _pokedexEntry = action.payload.pokedexEntry
           this.emit('CHANGE')
@@ -29,6 +33,7 @@ class PokedexStore extends EventEmitter {
           break;
         case 'CLEAR_SEARCH':
           _pokemon = null;
+          _fetching = false;
           this.emit('CHANGE')
           break;
         case 'FILTER_POKEMON':
@@ -52,7 +57,8 @@ class PokedexStore extends EventEmitter {
       pokemon: _pokemon,
       allPokemon: _allPokemon,
       pokedexEntry: _pokedexEntry,
-      unfilteredPokemon: _unfilteredPokemon
+      unfilteredPokemon: _unfilteredPokemon,
+      fetching: _fetching
     }
   }
 }

@@ -6,11 +6,12 @@ export default class PokedexEntry extends Component {
   }
 
   render() {
-    const { pokemon, pokedexEntry, dismiss } = this.props
+    const { pokemon, pokedexEntry, dismiss, fetching } = this.props
     return (
       <div className="row">
-        {pokemon ?
+        {fetching ?
           <div className="modalBack" onClick={dismiss}>
+            {pokemon ?
             <div className="pokeCard">
               <button className="close" onClick={dismiss}>x</button>
               <img className="picFront" src={pokemon.sprites.front_default}/>
@@ -22,11 +23,10 @@ export default class PokedexEntry extends Component {
                 <p className="flavorText">{pokedexEntry.flavor_text_entries[1].flavor_text}</p>
               </div>
             </div>
+            : <span className="loadingMessage">Catching your Pokémon...</span> }
           </div>
-        : <span></span> }
+        : null}
       </div>
     )
   }
 }
-
-// <span className="loadingMessage">Catching your Pokémon...</span>

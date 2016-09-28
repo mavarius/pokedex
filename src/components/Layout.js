@@ -43,14 +43,14 @@ export default class Layout extends Component {
   }
 
   render() {
-    const { allPokemon, pokemon, pokedexEntry, unfilteredPokemon } = this.state
+    const { allPokemon, pokemon, pokedexEntry, unfilteredPokemon, fetching } = this.state
     return (
       <div className='container'>
         <h1 className='text-center'>Pokédex</h1>
 
         <SearchBar allPokemon={allPokemon} unfilteredPokemon={unfilteredPokemon}/>
 
-        <PokedexEntry pokemon={pokemon} dismiss={this.dismiss} pokedexEntry={pokedexEntry}/>
+        <PokedexEntry pokemon={pokemon} dismiss={this.dismiss} pokedexEntry={pokedexEntry} fetching={fetching}/>
 
         <PokedexList allPokemon={allPokemon} pokemon={pokemon} fetchPokemon={this.fetchPokemon}/>
 

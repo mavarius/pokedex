@@ -16,9 +16,15 @@ export default class SearchBar extends Component {
     let searchEntry
 
     if (searchValue.length > 0) {
-      searchEntry = allPokemon.filter(pokemon => {
-        return pokemon.pokemon_species.name.slice(0, (searchValue.length)) === searchValue
-      })
+      if (isNaN(searchValue)) {
+        searchEntry = unfilteredPokemon.filter(pokemon => {
+          return pokemon.pokemon_species.name.slice(0, (searchValue.length)) === searchValue.toLowerCase()
+        })
+      } else {
+        searchEntry = unfilteredPokemon.filter(pokemon => {
+          return pokemon.entry_number === parseInt(searchValue)
+        })
+      }
     } else {
       searchEntry = unfilteredPokemon
     }
