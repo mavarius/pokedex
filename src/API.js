@@ -14,7 +14,7 @@ const API = {
   },
 
   fetchEmAll() {
-    $.get(`https://pokeapi.co/api/v2/pokedex/1/`, allPokemon => {
+    $.get(`http://pokeapi.co/api/v2/pokedex/1/`, allPokemon => {
       // debugger;
       ServerActions.hoardPokemon(allPokemon)
     })

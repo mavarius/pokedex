@@ -49,9 +49,8 @@
   height: 300px;
   position: absolute;
   left: 20px;
-  opacity: 0.2;
+  opacity: 0.3;
   z-index: 10;
-  -webkit-filter: grayscale(50%);
   filter: blur(5px);
 }
 
@@ -76,6 +75,14 @@
 
 .pokeName {
   display: block;
+}
+
+input {
+  background-color: rgba(0, 0, 0, 0.05);
+  border: none;
+  color: black;
+  border-bottom: 2px solid white;
+  width: 30vw;
 }
 
 .type {

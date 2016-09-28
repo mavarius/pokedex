@@ -5,6 +5,7 @@ import PokedexStore from '../stores/PokedexStore'
 
 import PokedexEntry from './PokedexEntry'
 import PokedexList from './PokedexList'
+import SearchBar from './SearchBar'
 
 export default class Layout extends Component {
   constructor() {
@@ -49,10 +50,7 @@ export default class Layout extends Component {
       <div className='container'>
         <h1 className='text-center'>Pokédex</h1>
 
-        <div className="row">
-          <input type="number" ref="pokemonNumber"/>
-          <button onClick={this.fetchPokemon} className="btn btn-default">Catch Pokemon</button>
-        </div>
+        <SearchBar/>
 
         <PokedexEntry pokemon={pokemon} dismiss={this.dismiss} pokedexEntry={pokedexEntry}/>
 
